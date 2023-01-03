@@ -72,7 +72,6 @@ img {
     left: 0;
     right: 0;
     z-index: 1001;
-    background-color: var(--main-color);
 }
 
 header :where(nav, .menu, .menu ul) {
@@ -160,6 +159,132 @@ nav :where(.menu-trigger, .search-trigger):hover {
 .menu .search-trigger {
     position: absolute;
     right: 70px;
+}
+
+/* HERO ============================================ */
+
+.hero {
+    position: relative;
+    height: 850px;
+    background-color: var(--main-color);
+}
+
+.hero .slide {
+    position: fixed;
+    width: 100%;
+    padding-top: 200px;
+    text-align: center;
+}
+
+.hero .slide::before,
+.hero .slide::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0 0 0 / 10%);
+    top: 60%;
+    left: 50%;
+    margin: -100px;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.hero .slide::after {
+    transform: scale(2);
+}
+
+.hero .slide .wrapper {
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+.hero .slide .swiper {
+    padding-bottom: 75px;
+}
+
+.hero .slide li {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.hero .slide li h2 {
+    font-size: clamp(1.75em 6vw 3em);
+    text-transform: uppercase;
+    color: white;
+}
+
+.hero .slide li h2 a {
+    background-image: linear-gradient(transparent 98%, var(--secondary-color));
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: all 0.7s;
+}
+
+.hero .slide li h2 a:hover {
+    background-size: 100% 100%;
+}
+
+.slide :where(.meta, .author) {
+    color: white;
+}
+
+.slide .meta span {
+    font-family: 'Libre Bodon';
+    position: relative;
+    display: inline-block;
+    padding: 0 1em;
+}
+
+.slide .meta span::before {
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: 0px;
+    width: 5px;
+    height: 5px;
+    background-color: var(--dark-color);
+    border-radius: 50%;
+    opacity: 0.35;
+}
+
+.slide .meta a:hover {
+    text-decoration: underline;
+}
+
+.slide .meta span::before {
+    left: -4px;
+}
+
+.slide .meta span:first-child::before {
+    content: none;
+}
+
+.slide .btn {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    width: 150px;
+    text-align: center;
+    line-height: 42px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.slide .read-more {
+    background-color: white;
+    border: 1px solid white;
+    color: var(--dark-color);
+    margin: 0 auto;
+    box-shadow: var(--main-box-shadow);
+}
+
+.slide .read-more:hover {
+    background-color: transparent;
+    color: white;
 }
 
 /* RESPONSIVE MENU ================================= */
