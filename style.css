@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+    --main-color: #5f27cd;
+    --secondary-color: #ff4757;
+    --grey-color: #ededed;
+    --dark-color: #2f3542;
+    --main-box-shadow: rgb(53 38 77 / 30%) 0px 20px 30px -10px;
+    --secondary-box-shadow: rgb(1 1 1 / 10%) 0 20px 40px 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--dark-color);
+}
+
+h1 {
+    font-size: clamp(1.75em, 6vw, 3.15em);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: clamp(1.5em, 3vw, 2.5em);
+}
+
+h3 {
+    font-size: 2.15em;
+}
+
+h1, h2, h3 {
+    line-height: 1.25;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+/* HEADER ========================================== */
+
+.site > header {
+    line-height: 100px;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background-color: var(--main-color);
+}
+
+header :where(nav, .menu, .menu ul) {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    justify-content: space-between;
+}
+
+/* ---- HEADER: LOGO ------------------------------- */
+
+.logo a {
+    font-size: 1.75em;
+    font-weight: 600;
+    letter-spacing: -2px;
+}
+
+.logo a span {
+    color: var(--dark-color);
+    opacity: 0.5;
+}
+
+nav :where(.logo, .menu li) a {
+    color: white;
+}
+
+/* ---- HEADER: MENU ------------------------------- */
+
+.menu li {
+    position: relative;
+    width: 100%;
+}
+
+.menu li a {
+    display: flex;
+    line-height: initial;
+    font-size: 1.25em;
+    padding: 0.5em 1em;
+    transition: color 0.3s;
+}
+
+nav .menu-trigger,
+.menu .search-trigger {
+    width: 36px;
+    height: 36px;
+    padding: 0.4em;
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+nav :where(.menu-trigger, .search-trigger):hover {
+    background-color: rgb(225 225 225 / 20%);
+}
+
+.menu .has-child > a {
+    position: relative;
+    padding-right: 2em;
+}
+.menu .has-child::before,
+.menu .has-child::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    top: 10px;
+    right: 0.5em;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+.menu .has-child::after {
+    transform: scale(2);
+    opacity: 0.5;
+}
+.menu ul ul li {
+    width: 100%;
+}
+
+/* ---- HEADER: SEARCH ----------------------------- */
+
+.menu .search-trigger {
+    position: absolute;
+    right: 70px;
+}
+
+/* RESPONSIVE MENU ================================= */
+
+/* ---- PROFILE ------------------------------------ */
+
+@media screen and (min-width: 992px) {
+    .profile,
+    nav .menu-trigger {
+        display: none;
+    }
+
+    .menu li {
+        width: auto;
+    }
+    .menu li a {
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding: 1em;
+        transition: background-color 0.3s;
+    }
+    .menu > ul > li > a:hover {
+        background-color: rgb(225 225 225 / 20%);
+        color: white;
+    }
+
+    .menu .search-trigger {
+        position: relative;
+        right: 0;
+    }
+
+    /* SUB-MENU ------------------------------------ */
+
+    .menu .has-child ul {
+        position: absolute;
+        background-color: white;
+        min-width: 150px;
+        padding-left: 0;
+        box-shadow: var(--secondary-box-shadow);
+        flex-direction: column;
+        align-items: flex-start;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s, visibility 0.2s;
+    }
+
+    .menu .has-child:hover > ul {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .menu .has-child ul li a {
+        color: var(--dark-color);
+        font-size: 12px;
+        width: 100%;
+        padding: 1em 1.5em;
+        transition: transform 0.3s, color 0.3s;
+    }
+
+    .menu .has-child ul li a:hover {
+        transform: translateX(10px);
+        color: var(--main-color);
+    }
+
+    .menu ul ul ul {
+        top: 0;
+        left: auto !important;
+        right: 100%;
+    }
+}
