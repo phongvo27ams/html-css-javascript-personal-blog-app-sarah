@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <title>Personal Blog - Sarah</title>
 </head>
 
@@ -64,8 +65,8 @@
             <div class="carousel slide">
                 <div class="wrapper">
                     <div class="swiper">
-                        <ul>
-                            <li>
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
                                 <h2><a href="#">Etiam suscipit ipsum eu neque elementum rhoncussem hrreet</a></h2>
                                 <div class="meta">
                                     <span class="author"><a href="#">By Sarah</a></span>
@@ -74,7 +75,7 @@
                                 </div>
                                 <a href="#" class="btn read-more">Read more</a>
                             </li>
-                            <li>
+                            <li class="swiper-slide">
                                 <h2><a href="#">Aenean rhoncus urna loremsit amet tincidunt libero</a></h2>
                                 <div class="meta">
                                     <span class="author"><a href="#">By Sarah</a></span>
@@ -83,7 +84,7 @@
                                 </div>
                                 <a href="#" class="btn read-more">Read more</a>
                             </li>
-                            <li>
+                            <li class="swiper-slide">
                                 <h2><a href="#">Pulvinar a nullam gravida malesuada lacinia</a></h2>
                                 <div class="meta">
                                     <span class="author"><a href="#">By Sarah</a></span>
@@ -93,13 +94,29 @@
                                 <a href="#" class="btn read-more">Read more</a>
                             </li>
                         </ul>
+
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            }
+        });
+    </script>
 </body>
 
 </html>

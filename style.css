@@ -287,6 +287,26 @@ nav :where(.menu-trigger, .search-trigger):hover {
     color: white;
 }
 
+.swiper .swiper-pagination .swiper-pagination-bullet-active {
+    position: relative;
+    background-color: var(--secondary-color);
+}
+
+.swiper .swiper-pagination .swiper-pagination-bullet-active::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 0px;
+    left: 0px;
+    right: 0.5em;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    transform: scale(2);
+    opacity: 0.3;
+    z-index: -1;
+}
+
 /* RESPONSIVE MENU ================================= */
 
 /* ---- PROFILE ------------------------------------ */
