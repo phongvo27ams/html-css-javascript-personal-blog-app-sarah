@@ -178,7 +178,9 @@ nav :where(.menu-trigger, .search-trigger):hover {
 }
 
 .hero .slide::before,
-.hero .slide::after {
+.hero .slide::after,
+.profile::before,
+.profile::after {
     content: '';
     position: absolute;
     width: 200px;
@@ -191,7 +193,8 @@ nav :where(.menu-trigger, .search-trigger):hover {
     z-index: -1;
 }
 
-.hero .slide::after {
+.hero .slide::after,
+.profile::after {
     transform: scale(2);
 }
 
@@ -448,12 +451,127 @@ footer .copyright {
 
 /* RESPONSIVE MENU ================================= */
 
+.menu,
+.menu ul {
+    flex-direction: column;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100vh;
+    background-color: var(--dark-color);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1010;
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+    transition: transform 0.2s, visibility 0.2s;
+}
+
+.showmenu .menu {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+}
+
+.showmenu .menu-trigger {
+    z-index: 10001;
+}
+
+.showmenu .section {
+    z-index: 0;
+}
+
+.showmenu .search-trigger,
+.showmenu .menu-trigger i:first-child,
+.menu-trigger i:last-child {
+    display: none;
+}
+
+.showmenu .menu-trigger i:last-child {
+    display: block;
+}
+
+.overflowme {
+    overflow: hidden;
+}
+
+.menu > ul {
+    font-weight: 500;
+    width: 100%;
+    padding: 0em 1em;
+    gap: 1em;
+}
+
 /* ---- PROFILE ------------------------------------ */
+
+.profile {
+    position: relative;
+    display: flex;
+    font-size: 80%;
+    width: 100%;
+    color: white;
+    line-height: 1.8;
+    padding: 5em 3em 2em;
+    margin-bottom: 2em;
+}
+
+.profile::before,
+.profile::after {
+    left: 50px;
+}
+
+.profile img {
+    width: 75px;
+    height: 75px;
+    margin-right: 1.5em;
+    border-radius: 50%;
+}
+
+/* ---- SUB-MENU ----------------------------------- */
+
+.menu ul ul {
+    padding-left: 1.5em;
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 200ms cubic-bezier(0,1,0,1);
+    transition: max-height 200ms cubic-bezier(0,1,0,1);
+}
+
+.menu li.expand > ul {
+    max-height: 600px;
+    -webkit-transition: max-height 200ms cubic-bezier(1,0,1,0);
+    transition: max-height 200ms cubic-bezier(1,0,1,0);
+}
+
+.menu ul ul li a {
+    font-size: 1em;
+}
 
 @media screen and (min-width: 992px) {
     .profile,
     nav .menu-trigger {
         display: none;
+    }
+
+    .menu {
+        position: relative;
+        flex-direction: row;
+        background-color: transparent;
+        height: auto;
+        width: auto;
+        padding: 0;
+        overflow: unset;
+        transform: none;
+        visibility: visible;
+    }
+
+    .menu > ul {
+        flex-direction: row;
+        gap: 0;
     }
 
     .menu li {
@@ -486,6 +604,11 @@ footer .copyright {
         box-shadow: var(--secondary-box-shadow);
         flex-direction: column;
         align-items: flex-start;
+
+        max-height: none;
+        height: auto;
+        overflow: visible;
+
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.2s, visibility 0.2s;
