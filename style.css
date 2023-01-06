@@ -162,6 +162,24 @@ nav :where(.menu-trigger, .search-trigger):hover {
     right: 70px;
 }
 
+/* ---- HEADER: FIXED ----------------------------- */
+
+header.fixed {
+    line-height: 60px;
+    background-color: var(--main-color);
+    z-index: 1100;
+    animation: show 0.3s;
+}
+
+@keyframes show {
+    0% {
+        transform: translateY(-60px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 /* HERO ============================================ */
 
 .hero {

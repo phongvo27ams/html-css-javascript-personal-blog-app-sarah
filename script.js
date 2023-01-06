@@ -16,3 +16,14 @@ function toggle() {
         this.parentNode.classList.toggle('expand');
     }
 }
+
+// Fixed Header
+const nav = document.querySelector('.site > header');
+function fixedNav() {
+    if (window.scrollY > 1000) {
+        nav.classList.add('fixed');
+    } else {
+        nav.classList.remove('fixed');
+    }
+}
+window.addEventListener('scroll', fixedNav);
