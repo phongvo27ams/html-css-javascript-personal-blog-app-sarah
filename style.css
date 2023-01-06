@@ -117,7 +117,8 @@ nav :where(.logo, .menu li) a {
 }
 
 nav .menu-trigger,
-.menu .search-trigger {
+.menu .search-trigger,
+.search .search-close {
     width: 36px;
     height: 36px;
     padding: 0.4em;
@@ -128,7 +129,8 @@ nav .menu-trigger,
     transition: background-color 0.3s;
 }
 
-nav :where(.menu-trigger, .search-trigger):hover {
+nav :where(.menu-trigger, .search-trigger):hover,
+.search .search-close:hover {
     background-color: rgb(225 225 225 / 20%);
 }
 
@@ -567,6 +569,56 @@ footer .copyright {
 
 .menu ul ul li a {
     font-size: 1em;
+}
+
+/* SEARCH ========================================== */
+
+.search {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: var(--main-color);
+    z-index: 8000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.show-search .search {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search form {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.search form input {
+    line-height: 100px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid var(--dark-color);
+    background-color: transparent;
+    font-family: inherit;
+    color: white;
+    font-size: 2em;
+}
+
+.search form input::placeholder {
+    color: var(--light-color)
+}
+
+.search .search-close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
 }
 
 @media screen and (min-width: 992px) {

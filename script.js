@@ -27,3 +27,14 @@ function fixedNav() {
     }
 }
 window.addEventListener('scroll', fixedNav);
+
+// Search Pop-up
+const search = document.querySelector('.search-trigger');
+const close = document.querySelector('.search-close');
+const theClass = document.querySelector('.site');
+search.addEventListener('click', function() {
+    theClass.classList.toggle('show-search');
+})
+close.addEventListener('click', function() {
+    theClass.classList.remove('show-search');
+})
