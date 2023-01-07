@@ -20,7 +20,7 @@ function toggle() {
 // Fixed Header
 const nav = document.querySelector('.site > header');
 function fixedNav() {
-    if (window.scrollY > 1000) {
+    if (window.scrollY > 740) {
         nav.classList.add('fixed');
     } else {
         nav.classList.remove('fixed');
